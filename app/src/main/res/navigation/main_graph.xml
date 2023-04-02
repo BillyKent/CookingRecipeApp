@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/recipesListFragment">
+
+    <fragment
+        android:id="@+id/recipesListFragment"
+        android:name="com.billysoft.cookingrecipeapp.ui.recipes.RecipesListFragment"
+        android:label="fragment_recipes_list"
+        tools:layout="@layout/fragment_recipes_list" >
+        <action
+            android:id="@+id/action_recipesListFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.billysoft.cookingrecipeapp.ui.detail.RecipeDetailFragment"
+        android:label="fragment_recipe_detail"
+        tools:layout="@layout/fragment_recipe_detail" >
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_recipeOriginFragment"
+            app:destination="@id/recipeOriginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeOriginFragment"
+        android:name="com.billysoft.cookingrecipeapp.ui.map.RecipeOriginFragment"
+        android:label="fragment_recipe_origin"
+        tools:layout="@layout/fragment_recipe_origin" />
+</navigation>
