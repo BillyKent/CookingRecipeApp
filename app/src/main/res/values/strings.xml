@@ -2,4 +2,11 @@
     <string name="app_name">CookingRecipeApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description_recipe_list_item">Recipe preview</string>
+    <string name="description_rating_star">Rating star</string>
+    <string name="description_timer">Recipe timer icon</string>
+    <string name="description_filter_fab">Filter icon</string>
+    <string name="search_recipes">Buscar recetas</string>
+    <string name="home_message">Encuentra las mejores\nrecetas de cocina</string>
+    <string name="description_search_bar_icon">Search icon</string>
 </resources>
