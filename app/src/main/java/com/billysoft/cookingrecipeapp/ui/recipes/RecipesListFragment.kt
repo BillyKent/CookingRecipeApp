@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.billysoft.cookingrecipeapp.databinding.FragmentRecipesListBinding
+import com.billysoft.domain.model.Recipe
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -26,13 +28,21 @@ class RecipesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.recipeList.observe(viewLifecycleOwner) { recipes ->
-            binding?.recyclerRecipeList?.adapter = RecipeListItemAdapter(recipes)
+            binding?.recyclerRecipeList?.adapter = RecipeListItemAdapter(recipes, ::onRecipeClicked)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+    }
+
+    private fun onRecipeClicked(recipe: Recipe) {
+        findNavController().navigate(
+            RecipesListFragmentDirections.navigateToRecipeDetailFragment(
+                recipeId = recipe.id
+            )
+        )
     }
 
 }

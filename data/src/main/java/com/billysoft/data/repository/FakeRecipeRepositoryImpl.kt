@@ -18,7 +18,13 @@ internal class FakeRecipeRepositoryImpl : RecipeRepository {
             photoUrl = "https://www.cocinista.es/download/bancorecursos/recetas/receta-arroz-chaufa-peruano.jpg",
             rating = 5.0f,
             cookingTime = 30,
-            origin = RecipeOrigin("Perú", -12.059782, -77.041074)
+            origin = RecipeOrigin("Perú", -12.059782, -77.041074),
+            ingredients = listOf(
+                "rice",
+                "roast_chicken",
+                "garlic",
+                "soy_sauce",
+            ),
         ),
         Recipe(
             id = UUID.randomUUID().toString(),
@@ -28,7 +34,16 @@ internal class FakeRecipeRepositoryImpl : RecipeRepository {
             photoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Lomo-saltado-perudelights.jpg/640px-Lomo-saltado-perudelights.jpg",
             rating = 3.5f,
             cookingTime = 50,
-            origin = RecipeOrigin("Perú", -12.059782, -77.041074)
+            origin = RecipeOrigin("Perú", -12.059782, -77.041074),
+            ingredients = listOf(
+                "tomato",
+                "rice",
+                "steak",
+                "onion",
+                "potatoes",
+                "coriander",
+                "soy_sauce",
+            ),
         ),
         Recipe(
             id = UUID.randomUUID().toString(),
@@ -41,7 +56,14 @@ internal class FakeRecipeRepositoryImpl : RecipeRepository {
             photoUrl = "https://www.comedera.com/wp-content/uploads/2021/08/carapulcra-peruana.jpg",
             rating = 4.0f,
             cookingTime = 35,
-            origin = RecipeOrigin("Chincha, Ica", -13.423964, -76.137956)
+            origin = RecipeOrigin("Chincha, Ica", -13.423964, -76.137956),
+            ingredients = listOf(
+                "rice",
+                "potatoes",
+                "peanuts",
+                "garlic",
+                "onion",
+            ),
         ),
     )
 
