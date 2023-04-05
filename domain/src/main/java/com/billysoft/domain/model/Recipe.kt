@@ -8,4 +8,5 @@ data class Recipe(
     val rating: Float,
     val cookingTime: Int,
     val origin: RecipeOrigin,
+    val ingredients: List<String>,
 )

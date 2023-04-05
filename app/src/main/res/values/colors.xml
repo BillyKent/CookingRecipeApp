@@ -35,6 +35,7 @@
     <color name="md_theme_outlineVariant">#D8C2C0</color>
     <color name="md_theme_scrim">#000000</color>
     <color name="gray">#9FA5C0</color>
+
     <color name="text_color_title">#2E3E5C</color>
 
 </resources>

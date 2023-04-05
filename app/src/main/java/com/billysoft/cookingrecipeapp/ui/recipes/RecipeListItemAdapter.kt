@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso
 
 class RecipeListItemAdapter(
     private val items: List<Recipe>,
+    private val onRecipeClicked: (Recipe) -> Unit,
 ) : Adapter<RecipeListItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = RecipeListItemViewHolder(
@@ -29,6 +30,9 @@ class RecipeListItemAdapter(
 
         fun bind(recipe: Recipe) {
             binding.apply {
+                cardRecipeItem.setOnClickListener {
+                    onRecipeClicked(recipe)
+                }
                 textRecipeTitle.text = recipe.title
                 textCookingTime.text = Formatters.formatTime(recipe.cookingTime)
                 textRatingStars.text = Formatters.formatRatingStars(recipe.rating)
