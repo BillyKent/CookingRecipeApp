@@ -1,5 +1,7 @@
 package com.billysoft.cookingrecipeapp.ui.map
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.billysoft.cookingrecipeapp.R
 import com.billysoft.cookingrecipeapp.databinding.FragmentRecipeOriginBinding
@@ -24,6 +24,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.maps.android.ktx.addMarker
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.awaitMapLoad
@@ -129,7 +130,7 @@ class RecipeOriginFragment : Fragment() {
             imageLocation.loadImageFromUrl(origin.referencePhotoUrl)
             textCoordenates.text = Formatters.formatCoordinates(origin.latitude, origin.longitude)
             buttonKnowMore.setOnClickListener {
-                Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
+                confirmNavigationToWikipedia(origin)
             }
         }
     }
@@ -154,6 +155,28 @@ class RecipeOriginFragment : Fragment() {
             enableMapGestures()
         }
 
+    }
+
+    private fun confirmNavigationToWikipedia(recipeOrigin: RecipeOrigin) {
+        val browserIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse(recipeOrigin.wikipediaUrl))
+        if (browserIntent.resolveActivity(requireActivity().packageManager) != null) {
+            MaterialAlertDialogBuilder(requireContext(), R.style.CustomDialogTheme)
+                .setTitle(R.string.know_more_title)
+                .setMessage(R.string.know_more_description)
+                .setPositiveButton(R.string.continue_label) { _, _ ->
+                    startActivity(browserIntent)
+                }
+                .setNegativeButton(R.string.cancel_label) { _, _ -> }
+                .setCancelable(true)
+                .show()
+        } else {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.something_goes_wrong),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
 
