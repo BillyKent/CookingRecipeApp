@@ -1,6 +1,7 @@
 package com.billysoft.data.di
 
-import com.billysoft.data.repository.FakeRecipeRepositoryImpl
+import com.billysoft.data.network.ApiService
+import com.billysoft.data.repository.RecipeRepositoryImpl
 import com.billysoft.domain.repository.RecipeRepository
 import dagger.Module
 import dagger.Provides
@@ -11,12 +12,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataModule {
+internal object DataModule {
 
     @Provides
     @Singleton
-    fun provideRecipeRepository(): RecipeRepository {
-        return FakeRecipeRepositoryImpl()
+    fun provideRecipeRepository(apiService: ApiService): RecipeRepository {
+        return RecipeRepositoryImpl(apiService)
     }
 
 }
