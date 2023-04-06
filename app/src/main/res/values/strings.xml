@@ -13,4 +13,6 @@
     <string name="ingredients">Ingredientes</string>
     <string name="description">Descripción</string>
     <string name="go_to_map_origin_label">Ver origen</string>
+    <string name="cloud_styling_basic_map_id">d877f30b5cbaef2c</string>
+    <string name="know_more">Conocer más</string>
 </resources>

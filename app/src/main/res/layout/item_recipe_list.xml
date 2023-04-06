@@ -5,7 +5,7 @@
     android:id="@+id/card_recipe_item"
     style="?materialCardViewElevatedStyle"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="160dp"
     android:layout_marginHorizontal="8dp"
     android:layout_marginBottom="20dp"
     app:cardBackgroundColor="@color/white"

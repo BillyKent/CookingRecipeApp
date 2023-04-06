@@ -30,5 +30,9 @@
         android:id="@+id/recipeOriginFragment"
         android:name="com.billysoft.cookingrecipeapp.ui.map.RecipeOriginFragment"
         android:label="fragment_recipe_origin"
-        tools:layout="@layout/fragment_recipe_origin" />
+        tools:layout="@layout/fragment_recipe_origin" >
+        <argument
+            android:name="recipe_id"
+            app:argType="string" />
+    </fragment>
 </navigation>

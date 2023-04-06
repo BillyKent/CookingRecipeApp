@@ -24,4 +24,11 @@ object Formatters {
         }
     }
 
+    /**
+     * Formats coordinates values
+     */
+    fun formatCoordinates(latitude: Double, longitude: Double): CharSequence? {
+        return "$latitude, $longitude"
+    }
+
 }

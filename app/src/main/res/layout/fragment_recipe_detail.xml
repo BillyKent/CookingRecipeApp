@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
     android:fillViewport="true"
     tools:context=".ui.detail.RecipeDetailFragment">
 
@@ -17,10 +18,10 @@
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="@string/description_arrow_back"
             android:focusable="true"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:padding="4dp"
             android:src="@drawable/ic_arrow_left"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +130,7 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/poppins_bold"
             android:includeFontPadding="false"
-            android:textColor="@color/text_color_title"
+            android:textColor="@color/dark_blue"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +147,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:includeFontPadding="false"
             android:text="@string/ingredients"
-            android:textColor="@color/text_color_title"
+            android:textColor="@color/dark_blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_recipe_photo" />
 
@@ -178,7 +179,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:includeFontPadding="false"
             android:text="@string/description"
-            android:textColor="@color/text_color_title"
+            android:textColor="@color/dark_blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler_ingredients" />
 
@@ -193,7 +194,7 @@
             android:alpha="0.8"
             android:fontFamily="@font/poppins"
             android:lineSpacingExtra="2dp"
-            android:textColor="@color/text_color_title"
+            android:textColor="@color/dark_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subtitle_description"

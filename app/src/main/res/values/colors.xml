@@ -6,8 +6,8 @@
     <color name="seed">#F5484A</color>
     <color name="md_theme_primary">#BA1A26</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
-    <color name="md_theme_primaryContainer">#FFDAD7</color>
-    <color name="md_theme_onPrimaryContainer">#410005</color>
+    <color name="md_theme_primaryContainer">#F5484A</color>
+    <color name="md_theme_onPrimaryContainer">#FFFFFF</color>
     <color name="md_theme_secondary">#B12B31</color>
     <color name="md_theme_onSecondary">#FFFFFF</color>
     <color name="md_theme_secondaryContainer">#FFDAD8</color>
@@ -22,9 +22,9 @@
     <color name="md_theme_onErrorContainer">#410002</color>
     <color name="md_theme_background">#FAFCFF</color>
     <color name="md_theme_onBackground">#001F2A</color>
-    <color name="md_theme_surface">#FAFCFF</color>
+    <color name="md_theme_surface">#FAFAFA</color>
     <color name="md_theme_onSurface">#001F2A</color>
-    <color name="md_theme_surfaceVariant">#F5DDDB</color>
+    <color name="md_theme_surfaceVariant">#F4EEEE</color>
     <color name="md_theme_onSurfaceVariant">#534342</color>
     <color name="md_theme_outline">#857371</color>
     <color name="md_theme_inverseOnSurface">#E1F4FF</color>
@@ -36,6 +36,6 @@
     <color name="md_theme_scrim">#000000</color>
     <color name="gray">#9FA5C0</color>
 
-    <color name="text_color_title">#2E3E5C</color>
+    <color name="dark_blue">#2E3E5C</color>
 
 </resources>
