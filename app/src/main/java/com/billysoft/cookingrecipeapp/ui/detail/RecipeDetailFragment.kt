@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.billysoft.cookingrecipeapp.databinding.FragmentRecipeDetailBinding
 import com.billysoft.cookingrecipeapp.util.DrawableMapper
 import com.billysoft.cookingrecipeapp.util.Formatters
 import com.billysoft.cookingrecipeapp.util.loadImageFromUrl
+import com.billysoft.domain.model.Recipe
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -41,18 +43,28 @@ class RecipeDetailFragment : Fragment() {
         }
 
         viewModel.recipeDetail.observe(viewLifecycleOwner) { recipe ->
-            binding?.apply {
-                textRecipeTitle.text = recipe.title
-                textRecipeDescription.text = recipe.description
-                textRatingStars.text = Formatters.formatRatingStars(recipe.rating)
-                textCookingTime.text = Formatters.formatTime(recipe.cookingTime)
-                imageRecipePhoto.loadImageFromUrl(recipe.photoUrl)
-
-                recyclerIngredients.adapter =
-                    IngredientItemAdapter(drawableMapper, recipe.ingredients)
-            }
+            setUpView(recipe)
         }
 
+    }
+
+    private fun setUpView(recipe: Recipe) {
+        binding?.apply {
+            textRecipeTitle.text = recipe.title
+            textRecipeDescription.text = recipe.description
+            textRatingStars.text = Formatters.formatRatingStars(recipe.rating)
+            textCookingTime.text = Formatters.formatTime(recipe.cookingTime)
+            imageRecipePhoto.loadImageFromUrl(recipe.photoUrl)
+
+            recyclerIngredients.adapter =
+                IngredientItemAdapter(drawableMapper, recipe.ingredients)
+
+            binding?.fabMapOrigin?.setOnClickListener {
+                findNavController().navigate(
+                    RecipeDetailFragmentDirections.navigateToRecipeOriginFragment(recipe.id)
+                )
+            }
+        }
     }
 
     override fun onDestroy() {

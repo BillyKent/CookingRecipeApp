@@ -13,4 +13,11 @@
     <string name="ingredients">Ingredientes</string>
     <string name="description">Descripción</string>
     <string name="go_to_map_origin_label">Ver origen</string>
+    <string name="cloud_styling_basic_map_id">d877f30b5cbaef2c</string>
+    <string name="know_more">Conocer más</string>
+    <string name="know_more_title">Conocer más</string>
+    <string name="know_more_description">Te llevaremos a la página web de Wikipedia</string>
+    <string name="continue_label">Continuar</string>
+    <string name="cancel_label">Cancelar</string>
+    <string name="something_goes_wrong">Lo sentimos algo salió mal</string>
 </resources>

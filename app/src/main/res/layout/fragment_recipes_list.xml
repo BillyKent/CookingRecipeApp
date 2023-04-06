@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
     android:fillViewport="true"
     tools:context=".ui.recipes.RecipesListFragment">
 
@@ -94,8 +95,9 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_semibold"
             android:includeFontPadding="false"
+            android:letterSpacing="-0.02"
             android:text="@string/home_message"
-            android:textColor="@color/text_color_title"
+            android:textColor="@color/dark_blue"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

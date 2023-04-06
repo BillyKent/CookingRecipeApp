@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/text_origin_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            android:id="@+id/text_origin_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/card_photo"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            tools:text="Arequipa" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_photo"
+            style="?materialCardViewElevatedStyle"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintDimensionRatio="w,1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+            <ImageView
+                android:id="@+id/image_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="200dp" />
+
+        <TextView
+            android:id="@+id/text_coordenates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:alpha="0.8"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:textColor="@color/dark_blue"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="@+id/imageView5"
+            tools:text="12.645234 , -5.3123123" />
+
+        <TextView
+            android:id="@+id/text_origin_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/card_photo"
+            app:layout_constraintTop_toBottomOf="@+id/text_origin_title"
+            tools:text="Perú" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/card_photo"
+            app:layout_constraintTop_toTopOf="@+id/card_photo"
+            app:srcCompat="@drawable/ic_location_on_24"
+            app:tint="?attr/colorOnSurface" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_know_more"
+            style="?materialButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/know_more"
+            app:backgroundTint="@color/seed"
+            app:icon="@drawable/ic_wikipedia"
+            app:iconSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="card_photo,text_origin_country"
+            tools:layout_editor_absoluteY="987dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

@@ -1,6 +1,7 @@
 package com.billysoft.cookingrecipeapp.ui.detail
 
 import androidx.lifecycle.*
+import com.billysoft.cookingrecipeapp.util.ARG_RECIPE_ID
 import com.billysoft.domain.model.Recipe
 import com.billysoft.domain.usecases.RecipeUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +18,7 @@ class RecipeDetailViewModel @Inject constructor(
     val recipeDetail: LiveData<Recipe> get() = _recipeDetail
 
     init {
-        savedStateHandle.get<String>("recipe_id")?.let { recipeId ->
+        savedStateHandle.get<String>(ARG_RECIPE_ID)?.let { recipeId ->
             viewModelScope.launch {
                 recipeUseCases.getRecipe(recipeId)?.let { recipe ->
                     _recipeDetail.value = recipe
