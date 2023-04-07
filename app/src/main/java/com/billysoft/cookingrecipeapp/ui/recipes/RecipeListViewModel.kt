@@ -24,7 +24,7 @@ class RecipeListViewModel @Inject constructor(
 
     val resultsCount = recipeList.map { it.size }
 
-    private var getRecipesJob: Job? = null
+    var getRecipesJob: Job? = null
     private val firstLoadReached = AtomicBoolean(false)
 
     init {
