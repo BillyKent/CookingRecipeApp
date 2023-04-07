@@ -28,7 +28,7 @@ class GetRecipes(
                     when (val filter = recipeFilter.queryFilter) {
                         is QueryFilter.ByKeyword -> {
                             if (filter.keyword.isNotBlank()) {
-                                recipe.title.contains(filter.keyword)
+                                recipe.title.contains(filter.keyword, true)
                             } else {
                                 true
                             }

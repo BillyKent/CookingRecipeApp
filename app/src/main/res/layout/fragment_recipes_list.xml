@@ -22,7 +22,7 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/poppins_bold"
             android:includeFontPadding="false"
-            android:letterSpacing="-0.02"
+            android:letterSpacing="-0.01"
             android:text="@string/home_message"
             android:textColor="@color/dark_blue"
             android:textSize="22sp"
@@ -77,14 +77,29 @@
                     android:contentDescription="@string/description_search_bar_icon"
                     android:src="@drawable/ic_search" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
-                    android:text="@string/search_recipes_hint"
-                    android:textColor="@color/gray" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:boxBackgroundMode="none"
+                    app:endIconMode="clear_text"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_edit_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/search_recipes_hint"
+                        android:imeOptions="actionDone"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.01"
+                        android:maxLines="1"
+                        android:textColor="@color/dark_blue"
+                        android:textColorHint="@color/gray" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

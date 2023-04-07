@@ -11,6 +11,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
+import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,39 +28,53 @@ class RecipeListViewModel @Inject constructor(
     val resultsCount = recipeList.map { it.size }
 
     private var getRecipesJob: Job? = null
+    private val firstLoadReached = AtomicBoolean(false)
+
+    var currentFilter = RecipeFilter.DEFAULT.copy()
 
     init {
-        getRecipes(RecipeFilter.DEFAULT)
+        getRecipes(currentFilter)
     }
 
     fun onFilterEvent(event: RecipeListEvent) {
-        val filter = RecipeFilter.DEFAULT
         when (event) {
             RecipeListEvent.ClearIngredientsFilter -> {
-                filter.ingredientFilter = IngredientFilter.NoFilter
+                currentFilter = currentFilter.copy(
+                    ingredientFilter = IngredientFilter.NoFilter
+                )
             }
             RecipeListEvent.ClearTextQuery -> {
-                filter.queryFilter = QueryFilter.NoFilter
+                currentFilter = currentFilter.copy(
+                    queryFilter = QueryFilter.NoFilter
+                )
             }
             is RecipeListEvent.SetIngredientsFilter -> {
-                filter.ingredientFilter = IngredientFilter.BySelectedIngredients(event.ingredients)
+                currentFilter = currentFilter.copy(
+                    ingredientFilter = IngredientFilter.BySelectedIngredients(event.ingredients)
+                )
             }
             is RecipeListEvent.SetKeywordFilter -> {
-                filter.queryFilter = QueryFilter.ByKeyword(event.keyword)
+                currentFilter = currentFilter.copy(
+                    queryFilter = QueryFilter.ByKeyword(event.keyword)
+                )
             }
         }
-        getRecipes(filter)
+        getRecipes(currentFilter)
     }
 
     private fun getRecipes(recipeFilter: RecipeFilter) {
         getRecipesJob?.cancel()
         getRecipesJob = recipeUseCases.getRecipes(recipeFilter)
             .onStart {
-                _uiEvent.value = UiEvent.ShowLoading
+                if (!firstLoadReached.get()) {
+                    _uiEvent.value = UiEvent.ShowLoading
+                }
             }
             .onEach { recipes ->
                 _recipeList.value = recipes
-                _uiEvent.value = UiEvent.HideLoading
+                if (!firstLoadReached.getAndSet(true)) {
+                    _uiEvent.value = UiEvent.HideLoading
+                }
             }
             .launchIn(viewModelScope)
     }

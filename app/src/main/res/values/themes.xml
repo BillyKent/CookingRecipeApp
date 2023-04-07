@@ -40,6 +40,12 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="HintTextAppearance">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 
     <style name="CustomDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="android:windowBackground">#0C2338</item>

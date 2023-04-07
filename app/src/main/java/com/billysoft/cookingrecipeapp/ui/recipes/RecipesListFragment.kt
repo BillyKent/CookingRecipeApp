@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.billysoft.cookingrecipeapp.R
@@ -28,6 +29,17 @@ class RecipesListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        binding?.inputEditSearch?.doAfterTextChanged { editable ->
+            editable?.toString()?.let { text ->
+                if (text.isBlank()) {
+                    viewModel.onFilterEvent(RecipeListEvent.ClearTextQuery)
+                } else {
+                    viewModel.onFilterEvent(RecipeListEvent.SetKeywordFilter(text))
+                }
+            }
+        }
+
         viewModel.recipeList.observe(viewLifecycleOwner) { recipes ->
             binding?.recyclerRecipeList?.adapter = RecipeListItemAdapter(recipes, ::onRecipeClicked)
         }
