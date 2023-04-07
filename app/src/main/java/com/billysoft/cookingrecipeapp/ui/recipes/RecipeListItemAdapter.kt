@@ -9,7 +9,6 @@ import com.billysoft.cookingrecipeapp.util.Formatters
 import com.billysoft.cookingrecipeapp.util.layoutInflater
 import com.billysoft.cookingrecipeapp.util.loadImageFromUrl
 import com.billysoft.domain.model.Recipe
-import com.squareup.picasso.Picasso
 
 class RecipeListItemAdapter(
     private val items: List<Recipe>,

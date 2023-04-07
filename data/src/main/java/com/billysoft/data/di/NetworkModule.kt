@@ -1,12 +1,15 @@
 package com.billysoft.data.di
 
+import android.content.Context
 import com.billysoft.data.network.ApiService
+import com.billysoft.data.network.ConnectivityManager
 import com.billysoft.data.util.DataModuleConstants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -46,4 +49,9 @@ internal object NetworkModule {
             .baseUrl(DataModuleConstants.BASE_URL).client(client).build()
             .create(ApiService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager {
+        return ConnectivityManager(context)
+    }
 }

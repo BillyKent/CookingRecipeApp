@@ -57,6 +57,11 @@ class RecipesListFragment : Fragment() {
                     binding?.groupShimmerViews?.visibility = View.GONE
                     binding?.groupUiViews?.visibility = View.VISIBLE
                 }
+                is RecipeListViewModel.UiEvent.ErrorLoading -> {
+                    findNavController().navigate(
+                        RecipesListFragmentDirections.navigateToErrorFragment(event.cause)
+                    )
+                }
             }
         }
     }

@@ -13,6 +13,11 @@
         <action
             android:id="@+id/navigate_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
+        <action
+            android:id="@+id/navigate_to_errorFragment"
+            app:destination="@id/errorFragment"
+            app:popUpTo="@id/recipesListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/recipeDetailFragment"
@@ -30,9 +35,23 @@
         android:id="@+id/recipeOriginFragment"
         android:name="com.billysoft.cookingrecipeapp.ui.map.RecipeOriginFragment"
         android:label="fragment_recipe_origin"
-        tools:layout="@layout/fragment_recipe_origin" >
+        tools:layout="@layout/fragment_recipe_origin">
         <argument
             android:name="recipe_id"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/errorFragment"
+        android:name="com.billysoft.cookingrecipeapp.ui.error.LoadingErrorFragment"
+        android:label="fragment_error"
+        tools:layout="@layout/fragment_loading_error">
+        <action
+            android:id="@+id/navigate_to_recipesListFragment"
+            app:destination="@id/recipesListFragment"
+            app:popUpTo="@id/errorFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="error_cause"
+            app:argType="com.billysoft.domain.model.exceptions.ExceptionCause" />
     </fragment>
 </navigation>

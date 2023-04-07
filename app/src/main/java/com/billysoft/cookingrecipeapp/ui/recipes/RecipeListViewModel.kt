@@ -2,9 +2,12 @@ package com.billysoft.cookingrecipeapp.ui.recipes
 
 import androidx.lifecycle.*
 import com.billysoft.domain.model.Recipe
+import com.billysoft.domain.model.exceptions.ExceptionCause
 import com.billysoft.domain.usecases.RecipeUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
@@ -45,9 +48,18 @@ class RecipeListViewModel @Inject constructor(
             }
             .onEach { recipes ->
                 _recipeList.value = recipes
-                if (!firstLoadReached.getAndSet(true)) {
-                    _uiEvent.value = UiEvent.HideLoading
+                if (recipes.isNotEmpty()) {
+                    if (!firstLoadReached.getAndSet(true)) {
+                        _uiEvent.value = UiEvent.HideLoading
+                    }
                 }
+            }
+            .catch { exception ->
+                val cause = ExceptionCause.fromException(exception)
+                if (cause != ExceptionCause.API_ERROR) {
+                    delay(800)
+                }
+                _uiEvent.value = UiEvent.ErrorLoading(cause)
             }
             .launchIn(viewModelScope)
     }
@@ -55,5 +67,7 @@ class RecipeListViewModel @Inject constructor(
     sealed class UiEvent {
         object ShowLoading : UiEvent()
         object HideLoading : UiEvent()
+        data class ErrorLoading(val cause: ExceptionCause) : UiEvent()
+
     }
 }
