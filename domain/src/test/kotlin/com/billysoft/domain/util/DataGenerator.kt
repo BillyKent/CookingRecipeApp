@@ -1,17 +1,14 @@
-package com.billysoft.data.repository
+package com.billysoft.domain.util
 
 import com.billysoft.domain.model.Recipe
 import com.billysoft.domain.model.RecipeOrigin
-import com.billysoft.domain.repository.RecipeRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import java.util.UUID
+import java.util.*
 
-internal class FakeRecipeRepositoryImpl : RecipeRepository {
+object DataGenerator {
 
-    private val fakeList: List<Recipe> = listOf(
+    fun createFakeReceiptData() = listOf(
         Recipe(
-            id = UUID.randomUUID().toString(),
+            id = "465c0a98-10ba-4997-87e4-82ef49489a2f",
             title = "Arroz chaufa",
             description = "El arroz chaufa, o chaufa, es un tipo de arroz frito consumido en Perú." +
                 " Forma parte del estilo gastronómico tusán, siendo parte de la gastronomía del país, en la cual se denomina como cocina chifa.",
@@ -28,10 +25,10 @@ internal class FakeRecipeRepositoryImpl : RecipeRepository {
                 wikipediaUrl = "https://es.wikipedia.org/wiki/Lima",
             ),
             ingredients = listOf(
-                "rice",
-                "roast_chicken",
-                "garlic",
-                "soy_sauce",
+                "Arroz",
+                "Pollo",
+                "Ajo",
+                "Salsa de soya",
             ),
         ),
         Recipe(
@@ -52,13 +49,13 @@ internal class FakeRecipeRepositoryImpl : RecipeRepository {
                 wikipediaUrl = "https://es.wikipedia.org/wiki/Lima",
             ),
             ingredients = listOf(
-                "tomato",
-                "rice",
-                "steak",
-                "onion",
-                "potatoes",
-                "coriander",
-                "soy_sauce",
+                "Tomate",
+                "Arroz",
+                "Carne",
+                "Cebolla",
+                "Tomates",
+                "Cilantro",
+                "Salsa de soya",
             ),
         ),
         Recipe(
@@ -82,22 +79,13 @@ internal class FakeRecipeRepositoryImpl : RecipeRepository {
                 wikipediaUrl = "https://es.wikipedia.org/wiki/Provincia_de_Chincha",
             ),
             ingredients = listOf(
-                "rice",
-                "potatoes",
-                "peanuts",
-                "garlic",
-                "onion",
+                "Arroz",
+                "Papa",
+                "Maní",
+                "Ajo",
+                "Cebolla",
             ),
         ),
     )
 
-    override fun getRecipes(): Flow<List<Recipe>> {
-        return flow {
-            emit(fakeList)
-        }
-    }
-
-    override suspend fun getRecipeById(id: String): Recipe? {
-        return fakeList.find { it.id == id }
-    }
 }
