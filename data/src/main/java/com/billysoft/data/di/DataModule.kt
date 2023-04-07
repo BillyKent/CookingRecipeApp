@@ -1,6 +1,7 @@
 package com.billysoft.data.di
 
 import com.billysoft.data.network.ApiService
+import com.billysoft.data.network.ConnectivityManager
 import com.billysoft.data.repository.RecipeRepositoryImpl
 import com.billysoft.domain.repository.RecipeRepository
 import dagger.Module
@@ -16,8 +17,11 @@ internal object DataModule {
 
     @Provides
     @Singleton
-    fun provideRecipeRepository(apiService: ApiService): RecipeRepository {
-        return RecipeRepositoryImpl(apiService)
+    fun provideRecipeRepository(
+        apiService: ApiService,
+        connectivityManager: ConnectivityManager,
+    ): RecipeRepository {
+        return RecipeRepositoryImpl(apiService, connectivityManager)
     }
 
 }

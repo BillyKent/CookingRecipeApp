@@ -19,4 +19,12 @@
     <string name="continue_label">Continuar</string>
     <string name="cancel_label">Cancelar</string>
     <string name="something_goes_wrong">Lo sentimos algo salió mal</string>
+    <string name="retry">Reintentar</string>
+    <string name="description_error_image">Error image</string>
+    <string name="oops">Oops!</string>
+    <string name="whoops">Whoops!</string>
+    <string name="no_connection">Sin conexión</string>
+    <string name="no_connection_message">No se puede conectar a la red,\npor favor revisa tu conexión\ne inténtalo más tarde</string>
+    <string name="api_issue_message">Estamos teniendo problemas. Reinténtalo más tarde</string>
+    <string name="unknown_error_message">Algo salió mal. Por favor reinténtalo más tarde</string>
 </resources>
