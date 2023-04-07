@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 internal interface ApiService {
 
-    @GET("recipsaes")
+    @GET("recipes")
     suspend fun getRecipes(): List<RecipeResponse>
 
 }
