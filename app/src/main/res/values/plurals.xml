@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="placeholder_results_count">
+        <item quantity="one">1 resultado</item>
+        <item quantity="other">%d resultados</item>
+    </plurals>
+</resources>

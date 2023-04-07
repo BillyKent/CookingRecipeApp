@@ -17,28 +17,31 @@
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/description_filter_fab"
+            android:visibility="gone"
             app:backgroundTint="#F5484A"
-
             app:elevation="0dp"
-            app:fabCustomSize="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:fabCustomSize="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
             app:srcCompat="@drawable/ic_settings"
             app:tint="@color/white" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
-            style="?materialCardViewOutlinedStyle"
+            style="?materialCardViewElevatedStyle"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="56dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
-            app:layout_constraintHorizontal_bias="0.233"
+            android:outlineAmbientShadowColor="@color/dark_blue"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:strokeColor="@color/gray">
@@ -63,7 +66,7 @@
                     android:layout_marginStart="12dp"
                     android:fontFamily="@font/poppins"
                     android:includeFontPadding="false"
-                    android:text="@string/search_recipes"
+                    android:text="@string/search_recipes_hint"
                     android:textColor="@color/gray" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -77,30 +80,45 @@
             android:orientation="vertical"
             android:overScrollMode="never"
             android:paddingHorizontal="12dp"
-            android:paddingTop="24dp"
+            android:paddingTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+            app:layout_constraintTop_toBottomOf="@+id/text_results"
             app:spanCount="2"
             tools:itemCount="4"
             tools:listitem="@layout/item_recipe_list" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/poppins_bold"
             android:includeFontPadding="false"
             android:letterSpacing="-0.02"
             android:text="@string/home_message"
             android:textColor="@color/dark_blue"
-            android:textSize="24sp"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:text="3 resultados"
+            android:textColor="@color/dark_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

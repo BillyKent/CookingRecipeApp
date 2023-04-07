@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.billysoft.cookingrecipeapp.R
 import com.billysoft.cookingrecipeapp.databinding.FragmentRecipesListBinding
 import com.billysoft.domain.model.Recipe
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,17 @@ class RecipesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.recipeList.observe(viewLifecycleOwner) { recipes ->
             binding?.recyclerRecipeList?.adapter = RecipeListItemAdapter(recipes, ::onRecipeClicked)
+        }
+
+        viewModel.resultsCount.observe(viewLifecycleOwner) { count ->
+            binding?.textResults?.text = resources.getQuantityText(
+                R.plurals.placeholder_results_count, count
+            ).toString().format(count)
+    
+        }
+
+        viewModel.uiEvent.observe(viewLifecycleOwner) {
+
         }
     }
 

@@ -11,16 +11,17 @@ internal class RecipeRepositoryImpl(
     private val apiService: ApiService,
 ) : RecipeRepository {
 
-    private val inMemoryRecipeList = mutableListOf<Recipe>()
+    private val inMemoryRecipeMap = mutableMapOf<String, Recipe>()
 
     override fun getRecipes(): Flow<List<Recipe>> = flow {
-        inMemoryRecipeList.clear()
-        val recipesFromServer = apiService.getRecipes().toDomainModel()
-        inMemoryRecipeList.addAll(recipesFromServer)
-        emit(inMemoryRecipeList)
+        if (inMemoryRecipeMap.isEmpty()) {
+            val recipesFromServer = apiService.getRecipes().toDomainModel()
+            inMemoryRecipeMap.putAll(recipesFromServer.associateBy(Recipe::id))
+        }
+        emit(inMemoryRecipeMap.values.toList())
     }
 
     override suspend fun getRecipeById(id: String): Recipe? {
-        return inMemoryRecipeList.find { it.id == id }
+        return inMemoryRecipeMap[id]
     }
 }
