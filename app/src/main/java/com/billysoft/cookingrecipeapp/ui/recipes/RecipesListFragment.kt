@@ -32,11 +32,7 @@ class RecipesListFragment : Fragment() {
 
         binding?.inputEditSearch?.doAfterTextChanged { editable ->
             editable?.toString()?.let { text ->
-                if (text.isBlank()) {
-                    viewModel.onFilterEvent(RecipeListEvent.ClearTextQuery)
-                } else {
-                    viewModel.onFilterEvent(RecipeListEvent.SetKeywordFilter(text))
-                }
+                viewModel.onSearchTextChanged(text)
             }
         }
 

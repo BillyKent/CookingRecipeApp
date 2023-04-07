@@ -3,9 +3,6 @@ package com.billysoft.cookingrecipeapp.ui.recipes
 import androidx.lifecycle.*
 import com.billysoft.domain.model.Recipe
 import com.billysoft.domain.usecases.RecipeUseCases
-import com.billysoft.domain.util.IngredientFilter
-import com.billysoft.domain.util.QueryFilter
-import com.billysoft.domain.util.RecipeFilter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
@@ -30,41 +27,17 @@ class RecipeListViewModel @Inject constructor(
     private var getRecipesJob: Job? = null
     private val firstLoadReached = AtomicBoolean(false)
 
-    var currentFilter = RecipeFilter.DEFAULT.copy()
-
     init {
-        getRecipes(currentFilter)
+        getRecipes(String())
     }
 
-    fun onFilterEvent(event: RecipeListEvent) {
-        when (event) {
-            RecipeListEvent.ClearIngredientsFilter -> {
-                currentFilter = currentFilter.copy(
-                    ingredientFilter = IngredientFilter.NoFilter
-                )
-            }
-            RecipeListEvent.ClearTextQuery -> {
-                currentFilter = currentFilter.copy(
-                    queryFilter = QueryFilter.NoFilter
-                )
-            }
-            is RecipeListEvent.SetIngredientsFilter -> {
-                currentFilter = currentFilter.copy(
-                    ingredientFilter = IngredientFilter.BySelectedIngredients(event.ingredients)
-                )
-            }
-            is RecipeListEvent.SetKeywordFilter -> {
-                currentFilter = currentFilter.copy(
-                    queryFilter = QueryFilter.ByKeyword(event.keyword)
-                )
-            }
-        }
-        getRecipes(currentFilter)
+    fun onSearchTextChanged(inputText: String) {
+        getRecipes(inputText)
     }
 
-    private fun getRecipes(recipeFilter: RecipeFilter) {
+    private fun getRecipes(filterText: String) {
         getRecipesJob?.cancel()
-        getRecipesJob = recipeUseCases.getRecipes(recipeFilter)
+        getRecipesJob = recipeUseCases.getRecipes(filterText)
             .onStart {
                 if (!firstLoadReached.get()) {
                     _uiEvent.value = UiEvent.ShowLoading
