@@ -36,11 +36,20 @@ class RecipesListFragment : Fragment() {
             binding?.textResults?.text = resources.getQuantityText(
                 R.plurals.placeholder_results_count, count
             ).toString().format(count)
-    
+
         }
 
-        viewModel.uiEvent.observe(viewLifecycleOwner) {
-
+        viewModel.uiEvent.observe(viewLifecycleOwner) { event ->
+            when (event) {
+                RecipeListViewModel.UiEvent.ShowLoading -> {
+                    binding?.groupShimmerViews?.visibility = View.VISIBLE
+                    binding?.groupUiViews?.visibility = View.INVISIBLE
+                }
+                RecipeListViewModel.UiEvent.HideLoading -> {
+                    binding?.groupShimmerViews?.visibility = View.GONE
+                    binding?.groupUiViews?.visibility = View.VISIBLE
+                }
+            }
         }
     }
 

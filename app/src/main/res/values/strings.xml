@@ -7,7 +7,7 @@
     <string name="description_timer">Recipe timer icon</string>
     <string name="description_filter_fab">Filter icon</string>
     <string name="search_recipes_hint">Busca tu receta perfecta</string>
-    <string name="home_message">Encuentra las mejores recetas de cocina</string>
+    <string name="home_message">Encuentra las mejores\nrecetas de cocina</string>
     <string name="description_search_bar_icon">Search icon</string>
     <string name="description_arrow_back">Back arrow icon</string>
     <string name="ingredients">Ingredientes</string>

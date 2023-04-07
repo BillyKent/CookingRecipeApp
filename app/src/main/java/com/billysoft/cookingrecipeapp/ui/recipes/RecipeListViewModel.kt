@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
@@ -53,8 +54,12 @@ class RecipeListViewModel @Inject constructor(
     private fun getRecipes(recipeFilter: RecipeFilter) {
         getRecipesJob?.cancel()
         getRecipesJob = recipeUseCases.getRecipes(recipeFilter)
+            .onStart {
+                _uiEvent.value = UiEvent.ShowLoading
+            }
             .onEach { recipes ->
                 _recipeList.value = recipes
+                _uiEvent.value = UiEvent.HideLoading
             }
             .launchIn(viewModelScope)
     }

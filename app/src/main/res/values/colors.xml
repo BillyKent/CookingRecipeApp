@@ -38,4 +38,7 @@
 
     <color name="dark_blue">#2E3E5C</color>
 
+    <color name="color_shimmer_start_gray">#DADDF4</color>
+    <color name="color_shimmer_end_gray">#EDEFFC</color>
+
 </resources>
