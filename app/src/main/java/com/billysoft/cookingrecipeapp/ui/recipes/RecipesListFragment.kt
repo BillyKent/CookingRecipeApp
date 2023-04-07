@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.billysoft.cookingrecipeapp.R
 import com.billysoft.cookingrecipeapp.databinding.FragmentRecipesListBinding
 import com.billysoft.domain.model.Recipe
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,8 +29,39 @@ class RecipesListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        binding?.inputEditSearch?.doAfterTextChanged { editable ->
+            editable?.toString()?.let { text ->
+                if (text.isBlank()) {
+                    viewModel.onFilterEvent(RecipeListEvent.ClearTextQuery)
+                } else {
+                    viewModel.onFilterEvent(RecipeListEvent.SetKeywordFilter(text))
+                }
+            }
+        }
+
         viewModel.recipeList.observe(viewLifecycleOwner) { recipes ->
             binding?.recyclerRecipeList?.adapter = RecipeListItemAdapter(recipes, ::onRecipeClicked)
+        }
+
+        viewModel.resultsCount.observe(viewLifecycleOwner) { count ->
+            binding?.textResults?.text = resources.getQuantityText(
+                R.plurals.placeholder_results_count, count
+            ).toString().format(count)
+
+        }
+
+        viewModel.uiEvent.observe(viewLifecycleOwner) { event ->
+            when (event) {
+                RecipeListViewModel.UiEvent.ShowLoading -> {
+                    binding?.groupShimmerViews?.visibility = View.VISIBLE
+                    binding?.groupUiViews?.visibility = View.INVISIBLE
+                }
+                RecipeListViewModel.UiEvent.HideLoading -> {
+                    binding?.groupShimmerViews?.visibility = View.GONE
+                    binding?.groupUiViews?.visibility = View.VISIBLE
+                }
+            }
         }
     }
 

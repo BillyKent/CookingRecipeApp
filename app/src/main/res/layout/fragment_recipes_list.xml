@@ -13,32 +13,52 @@
         android:layout_height="wrap_content">
 
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/poppins_bold"
+            android:includeFontPadding="false"
+            android:letterSpacing="-0.01"
+            android:text="@string/home_message"
+            android:textColor="@color/dark_blue"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/description_filter_fab"
+            android:visibility="gone"
             app:backgroundTint="#F5484A"
-
             app:elevation="0dp"
-            app:fabCustomSize="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:fabCustomSize="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
             app:srcCompat="@drawable/ic_settings"
             app:tint="@color/white" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
-            style="?materialCardViewOutlinedStyle"
+            style="?materialCardViewElevatedStyle"
             android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_height="56dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
-            app:layout_constraintHorizontal_bias="0.233"
+            android:outlineAmbientShadowColor="@color/dark_blue"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:strokeColor="@color/gray">
@@ -57,14 +77,29 @@
                     android:contentDescription="@string/description_search_bar_icon"
                     android:src="@drawable/ic_search" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
-                    android:text="@string/search_recipes"
-                    android:textColor="@color/gray" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:boxBackgroundMode="none"
+                    app:endIconMode="clear_text"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_edit_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/search_recipes_hint"
+                        android:imeOptions="actionDone"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.01"
+                        android:maxLines="1"
+                        android:textColor="@color/dark_blue"
+                        android:textColorHint="@color/gray" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -77,31 +112,87 @@
             android:orientation="vertical"
             android:overScrollMode="never"
             android:paddingHorizontal="12dp"
-            android:paddingTop="24dp"
+            android:paddingTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+            app:layout_constraintTop_toBottomOf="@+id/text_results"
             app:spanCount="2"
             tools:itemCount="4"
             tools:listitem="@layout/item_recipe_list" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/text_results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/poppins_medium"
             android:includeFontPadding="false"
-            android:letterSpacing="-0.02"
-            android:text="@string/home_message"
             android:textColor="@color/dark_blue"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+            tools:text="3 resultados" />
 
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardShimmer"
+            style="?materialCardViewElevatedStyle"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:strokeColor="@color/gray">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shimmer_background" />
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardShimmer">
+
+            <include layout="@layout/shimmer_recipe_list" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_shimmer_views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="shimmer_view_container_2,materialCardShimmer"
+            tools:visibility="gone" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_ui_views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="materialCardView,recycler_recipe_list,text_results"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

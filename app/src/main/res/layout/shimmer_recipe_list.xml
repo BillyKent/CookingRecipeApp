@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/text_results_shimmer"
+        android:layout_width="104dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shimmer_background_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/text_results_shimmer2"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/shimmer_background_10"
+        app:layout_constraintEnd_toStartOf="@+id/text_results_shimmer3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_results_shimmer" />
+
+    <View
+        android:id="@+id/text_results_shimmer3"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shimmer_background_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/text_results_shimmer2"
+        app:layout_constraintTop_toBottomOf="@+id/text_results_shimmer" />
+
+    <View
+        android:id="@+id/text_results_shimmer4"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/shimmer_background_10"
+        app:layout_constraintEnd_toStartOf="@+id/text_results_shimmer5"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_results_shimmer2" />
+
+    <View
+        android:id="@+id/text_results_shimmer5"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/shimmer_background_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/text_results_shimmer4"
+        app:layout_constraintTop_toBottomOf="@+id/text_results_shimmer3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
