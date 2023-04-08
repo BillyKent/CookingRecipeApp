@@ -63,4 +63,4 @@ El manejo de errores se da en la pantalla principal y permiten el reintento.
 <img src="https://github.com/BillyKent/CookingRecipeApp/blob/master/screenshots/map_confirmation.png" alt="drawing" width="300"/>|
 
 ## Descarga la aplicación
-Descarga el apk debug [aquí](https://github.com/BillyKent/CookingRecipeApp/raw/main/apk/CookingRecipeApkDebug.apk)
+Descarga el apk debug [aquí](https://github.com/BillyKent/CookingRecipeApp/blob/apk/CookingRecipeApkDebug.apk)
