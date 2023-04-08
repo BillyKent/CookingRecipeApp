@@ -1,6 +1,8 @@
 package com.billysoft.cookingrecipeapp.ui.recipes
 
 import androidx.lifecycle.*
+import com.billysoft.cookingrecipeapp.R
+import com.billysoft.cookingrecipeapp.util.DrawableMapper
 import com.billysoft.domain.model.Recipe
 import com.billysoft.domain.model.exceptions.ExceptionCause
 import com.billysoft.domain.usecases.RecipeUseCases
@@ -48,6 +50,12 @@ class RecipeListViewModel @Inject constructor(
             }
             .onEach { recipes ->
                 _recipeList.value = recipes
+
+                recipes.flatMap { it.ingredients }.distinct()
+                    .filter { DrawableMapper().getIngredientDrawable(it) == R.drawable.ic_vegetable }.forEach {
+                        println(it)
+                    }
+
                 if (recipes.isNotEmpty()) {
                     if (!firstLoadReached.getAndSet(true)) {
                         _uiEvent.value = UiEvent.HideLoading
