@@ -37,6 +37,7 @@ La aplicación usa varias libreras de Android y de terceros con el fin de simpli
 * **Picasso:** librería para cargar imágenes de internet mediante la url.
 * **Android-KTX:** conjunto de librerías con funciones de extensión de kotlin útiles para simplificar el uso de librerías legacy de android.
 * **Maps-API:** librería para mostrar mostrar y manipular mapas en la aplicación.
+* **Navigation-component:** para manejar la navegación entre pantallas.
 * **Facebook-Shimmer:** librería de facebook para representar estados de carga.
 
 ## Manejo de errores
@@ -49,10 +50,8 @@ El manejo de errores se da en la pantalla principal y permiten el reintento.
 
 ## Recursos externos.
 
-### Para el diseño de las pantallas
-
- 
-* [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-* [Glide](https://developer.android.com/training/dependency-injection/hilt-android) 
-* [Lyfecycle view model](https://developer.android.com/jetpack/androidx/releases/lifecycle)
+* Inspiración del diseño: [Behance](https://www.behance.net/gallery/166732789/Food-Recipe-Mobile-App?tracking_source=search_projects%7Crecipe+app)
+* Inspiración del diseño: [Dribble](https://dribbble.com/shots/17501406-Cooking-App)
+* Íconos e ilustraciones: [Flaticon](https://www.flaticon.com/packs/food-109?word=ingredients)
+* Mocks de API: [mockable.io](https://www.mockable.io/)
 
