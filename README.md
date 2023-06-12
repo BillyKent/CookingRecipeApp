@@ -55,3 +55,12 @@ El manejo de errores se da en la pantalla principal y permiten el reintento.
 * Íconos e ilustraciones: [Flaticon](https://www.flaticon.com/packs/food-109?word=ingredients)
 * Mocks de API: [mockable.io](https://www.mockable.io/)
 
+## Capturas
+<img src="https://github.com/BillyKent/CookingRecipeApp/blob/master/screenshots/main.png" alt="drawing" width="300"/>|
+<img src="https://github.com/BillyKent/CookingRecipeApp/blob/master/screenshots/detail.png" alt="drawing" width="300"/>|
+<img src="https://github.com/BillyKent/CookingRecipeApp/blob/master/screenshots/map.png" alt="drawing" width="300"/>|
+<img src="https://github.com/BillyKent/CookingRecipeApp/blob/master/screenshots/map_detail.png" alt="drawing" width="300"/>|
+<img src="https://github.com/BillyKent/CookingRecipeApp/blob/master/screenshots/map_confirmation.png" alt="drawing" width="300"/>|
+
+## Descarga la aplicación
+Descarga el apk debug [aquí](https://github.com/BillyKent/CookingRecipeApp/blob/master/apk/CookingRecipeApkDebug.apk)
